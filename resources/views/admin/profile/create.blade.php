@@ -29,8 +29,8 @@
                     <div class="form-group row">
                         <label class="col-md-2">性別</label>
                         <div class="col-md-10">
-                            <input type="checkbox" name="gender" {{ old('gender') ? 'checked' : '' }}>女
-                            <input type="checkbox" name="gender" {{ old('gender') ? : '' }}>男
+                            <input name="gender" type="radio" value="男性" {{ old('gender') == '男性' ? 'checked' : '' }}>男性<br />
+                            <input name="gender" type="radio" value="女性" {{ old('gender') == '女性' ? 'checked' : '' }}>女性
                         </div>
                     </div>
                     <div class="form-group row">
