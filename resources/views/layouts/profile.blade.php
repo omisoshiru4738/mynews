@@ -68,15 +68,6 @@
                             </li>
                             @endguest
                             {{-- 以上までを追記 --}}
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-
                         </ul>
 
                         <!-- Right Side Of Navbar -->

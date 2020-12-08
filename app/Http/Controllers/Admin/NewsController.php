@@ -23,7 +23,6 @@ class NewsController extends Controller
 
       $news = new News;
       $form = $request->all();
-
       // フォームから画像が送信されてきたら、保存して、$news->image_path に画像のパスを保存する
       if (isset($form['image'])) {
         $path = $request->file('image')->store('public/image');
@@ -31,12 +30,10 @@ class NewsController extends Controller
       } else {
           $news->image_path = null;
       }
-
       // フォームから送信されてきた_tokenを削除する
       unset($form['_token']);
       // フォームから送信されてきたimageを削除する
       unset($form['image']);
-
       // データベースに保存する
       $news->fill($form);
       $news->save();
@@ -54,10 +51,10 @@ class NewsController extends Controller
           // それ以外はすべてのニュースを取得する
           $posts = News::all();
       }
+      print_r($cond_title);
       return view('admin.news.index', ['posts' => $posts, 'cond_title' => $cond_title]);
   }
   // 以下を追記
-
   public function edit(Request $request)
   {
       // News Modelからデータを取得する
@@ -92,5 +89,13 @@ public function update(Request $request)
       $news->fill($news_form)->save();
       return redirect('admin/news');
   }
-  
+   // 以下を追記　　
+  public function delete(Request $request)
+  {
+      // 該当するNews Modelを取得
+      $news = News::find($request->id);
+      // 削除する
+      $news->delete();
+      return redirect('admin/news/');
+  } 
 }
